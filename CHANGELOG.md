@@ -4,6 +4,36 @@
 
 ---
 
+## v3.6.0
+
+- **SHA1**: `TBD`
+
+**主题**：新增 Analyst 角色 + 项目初始化管线 + 工作流重构
+
+引入 Analyst 角色填补需求侧空白，新增项目初始化管线使协议可直接用于全新项目，重构工作流将验收环节独立为状态机状态。
+
+**关键变更 — 新增角色与管线：**
+
+| # | 变更项 | 说明 |
+|---|--------|------|
+| 1 | 新增 Analyst 角色（ANALYST.md） | 职责：需求澄清、影响面分析、外部 spec 归档、验收确认 |
+| 2 | 新增 INIT.md 初始化管线 | 7 步初始化：目录创建→技术栈检测→rules 整理→项目分析→生成规则→填充 memory→输出报告 |
+| 3 | 状态机新增 accepting 状态 | implementing → accepting → reviewing，验收不通则 FAIL(function) 回 implementing |
+| 4 | 工作流新增 spec 形成阶段 | 无 spec → Analyst 需求澄清 → spec-draft → 用户确认 → 正式 spec |
+| 5 | 验收确认机制 | Analyst 按 spec 验收标准逐条验证，acceptance-result PASS 前不得进入 reviewing |
+
+**关键变更 — 文档重构：**
+
+| # | 变更项 | 说明 |
+|---|--------|------|
+| 6 | 规则目录分级 | framework/ + {技术栈}/ + custom/ + generated/ 四级规则结构 |
+| 7 | 章节结构调整 | AGENTS.md 从 7 章扩展为 9 章，新增 Bootstrap + Analyst 章节，后续章节重新编号 |
+| 8 | 流程纪律强化 | 新增「流程跳过需确认」和「不可擅自跳过任何步骤」原则，优先级链细化 |
+| 9 | README 全面重写 | 从 2 行占位符升级为完整项目文档，含四角色模型、状态机、快速开始 |
+| 10 | TL;DR 更新 | 反映 Analyst 角色参与的需求形成和验收环节 |
+
+---
+
 ## v3.5.0
 
 - **SHA1**: `407092aeee183db2d0d5be10ab485ffbbcf96740`
