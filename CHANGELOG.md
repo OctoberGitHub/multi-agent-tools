@@ -4,6 +4,38 @@
 
 ---
 
+## v3.6.0
+
+- **SHA1**: `4d8e65c`（含未提交工作树变更）
+
+**主题**：Analyst 角色独立 + Bootstrap 初始化管线 + 状态机 accepting 状态
+
+引入 Analyst 角色接管需求端和验收端，新增 Bootstrap 初始化流程，在 implementing→reviewing 之间插入 accepting 状态，使流程从"Planner→Executor→Reviewer"三角色演变为"Analyst→Planner→Executor→Reviewer"四角色。
+
+**关键变更：**
+
+| # | 变更项 | 说明 |
+|---|--------|------|
+| 1 | **新增 Analyst 角色** | 独立角色定义（ANALYST.md），职责涵盖需求澄清、影响面分析、外部 spec 归档、验收确认 |
+| 2 | **新增 accepting 状态** | 在 implementing→reviewing 之间插入 Analyst 验收环节，验收通过（PASS）方可进入 reviewing |
+| 3 | **新增 Bootstrap 初始化** | INIT.md 定义 6 步初始化管线：自检目录→检测技术栈→整理 rules→分析项目结构→生成规则→填充 memory |
+| 4 | **TL;DR 重写** | 加入初始化流程、需求形成流程、Analyst 验收环节、FAIL(function/code/design) 三类回退 |
+| 5 | **章节重组（3 章→9 章）** | 新增一、项目初始化；四、分析师；六、Bug-fix 独立章节；七、任务拆分原则；八、最小可用栈；九、质量度量 |
+| 6 | **目录结构细化** | rules/ 拆为 4 层（framework/ + 技术栈/ + custom/ + generated/），specs/ 加入子目录结构 |
+| 7 | **全局原则扩充** | 规则内核优先级链（custom > generated > 技术栈 > framework）、跨域优先级链（rules > memory > skill）、流程跳过需确认原则 |
+| 8 | **工作流新增步骤 0** | Spec 形成环节归入 Analyst，含归档和需求澄清两条路径 |
+| 9 | **backlog 条目规范增强** | 新增 spec_ref、priority 字段，task_id 和 spec_ref 统一命名格式 |
+| 10 | **plan.md 规范细化** | 验收标准由 Analyst 在 spec 中定义，Planner 直接引用不重复编写；新增业务架构沉淀清单 |
+| 11 | **状态转换规则重构** | 清除冗余守卫条件（如 planning→blocked 由通用阻塞规则覆盖），新增上游依赖验收前置检查 |
+| 12 | **范围漂移处理收缩** | 从 15 行→5 行（保留三方角色分工步骤），与 v3.5.0 文档精简方向一致 |
+
+**涉及文件**：
+- AGENTS.md：216 行变更（+283 / -83），全篇章节目录重编
+- ANALYST.md：新增独立角色定义文件
+- INIT.md：新增 6 步初始化管线
+
+---
+
 ## v3.5.0
 
 - **SHA1**: `407092aeee183db2d0d5be10ab485ffbbcf96740`
